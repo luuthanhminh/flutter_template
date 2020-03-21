@@ -13,7 +13,7 @@ abstract class _BaseStore with Store {
   }
 
   @observable
-  bool isLoading;
+  bool isLoading = false;
 
   @action
   void showLoading() {

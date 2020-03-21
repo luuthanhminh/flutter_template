@@ -16,6 +16,6 @@ class SplashStore extends BaseStore {
 
   @action
   void navigateToNextPage() {
-    this.navigationService.pushNamed(Routes.login);
+    this.navigationService.pushReplacementNamed(Routes.login);
   }
 }

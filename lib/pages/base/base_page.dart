@@ -14,6 +14,7 @@ abstract class BaseStatelessPage<T extends BaseStore> extends StatelessWidget {
     return buildPage(context);
   }
 
+
   Widget buildPage(BuildContext context);
 }
 
@@ -29,4 +30,5 @@ abstract class BaseState<T extends BaseStateFullPage> extends State<T> {
     super.didChangeDependencies();
     this.widget.store.initNavigation(new NavigationService(this.context));
   }
+
 }

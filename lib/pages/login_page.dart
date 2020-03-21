@@ -1,12 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boiler_template/pages/base/base_page.dart';
 import 'package:flutter_boiler_template/stores/login_store.dart';
+import 'package:flutter_boiler_template/utils/device/device_utils.dart';
+import 'package:flutter_boiler_template/widgets/progress_indicator_widget.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class LoginPage extends BaseStatelessPage<LoginStore> {
+class LoginPage extends BaseStateFullPage<LoginStore> {
   LoginPage(LoginStore store) : super(store);
 
   @override
-  Widget buildPage(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Login Page")));
+  State<StatefulWidget> createState() => _LoginState();
+}
+
+class _LoginState extends BaseState<LoginPage> {
+  LoginStore get loginStore => this.widget.store;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Login Page")
+      ),
+      body: Stack(children: <Widget>[
+        Padding(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            child: Column(children: <Widget>[
+              Text("UserName"),
+              SizedBox(
+                height: 10,
+              ),
+              Observer(
+                  builder: (_) => Container(
+                        width: double.infinity,
+                        height: 50,
+                        child:
+                            TextField(onChanged: (value) => loginStore.email),
+                      )),
+              SizedBox(
+                height: 20,
+              ),
+              Text("Password"),
+              SizedBox(
+                height: 10,
+              ),
+              Observer(
+                  builder: (_) => Container(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextField(
+                          onChanged: (value) => loginStore.password))),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 300,
+                height: 50,
+                child: RaisedButton(
+                    onPressed: () {
+                      DeviceUtils.hideKeyboard(context);
+                      loginStore.login();
+                    },
+                    child: Text("Login")),
+              )
+            ])),
+        Observer(
+            builder: (_) => Visibility(
+                  child: const CustomProgressIndicatorWidget(),
+                  visible: loginStore.isLoading,
+                ))
+      ]),
+    );
   }
 }
