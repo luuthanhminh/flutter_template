@@ -21,6 +21,6 @@ class LoginStore extends BaseStore{
   }
 
   void login(){
-    showLoading();
+    print("Login function is executed");
   }
 }
