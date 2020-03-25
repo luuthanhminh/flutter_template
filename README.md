@@ -4,10 +4,6 @@ A new Flutter project with Mobx + Provider
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
 - [Mobx](https://github.com/mobxjs/mobx.dart)
 
 Mobx works with code generation, execute the following command to generate files:
@@ -22,7 +18,7 @@ or watch command in order to keep the source code synced automatically:
 flutter packages pub run build_runner watch --delete-conflicting-outputs
 ```
 
-## Hide Generated Files
+Hide Generated Files
 
 In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `Files:Exclude`. Add the following patterns:
 ```
