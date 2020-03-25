@@ -1,4 +1,4 @@
-# flutter_boiler_template
+# flutter_template
 
 A new Flutter project with Mobx + Provider
 
@@ -18,7 +18,7 @@ or watch command in order to keep the source code synced automatically:
 flutter packages pub run build_runner watch --delete-conflicting-outputs
 ```
 
-Hide Generated Files
+#### Hide Generated Files
 
 In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `Files:Exclude`. Add the following patterns:
 ```
