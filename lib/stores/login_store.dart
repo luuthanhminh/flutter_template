@@ -23,7 +23,10 @@ abstract class _LoginStore extends BaseStore with Store {
     password = value;
   }
 
-  void login() {
-    print("Login function is executed");
+  Future login() async {
+    print(email + " " + password);
+    showLoading();
+    await Future.delayed(const Duration(seconds: 3));
+    hideLoading();
   }
 }

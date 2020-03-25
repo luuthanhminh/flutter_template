@@ -14,6 +14,7 @@ class LoginPage extends BaseStateFullPage<LoginStore> {
 
 class _LoginState extends BaseState<LoginPage> {
   LoginStore get loginStore => this.widget.store;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -23,40 +24,33 @@ class _LoginState extends BaseState<LoginPage> {
         Padding(
             padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
             child: Column(children: <Widget>[
-              Text("UserName"),
+              Observer(
+                  builder: (_) => Container(
+                        width: double.infinity,
+                        height: 50,
+                        child: TextField(
+                          onChanged: (value) => loginStore.email = value,
+                          decoration: InputDecoration(
+                              labelText: "Email",
+                              hintText: "Your email",
+                              border: OutlineInputBorder()),
+                        ),
+                      )),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               Observer(
                   builder: (_) => Container(
                         width: double.infinity,
                         height: 50,
                         child: TextField(
-                            controller:
-                                TextEditingController(text: loginStore.email)),
+                          onChanged: (value) => loginStore.password = value,
+                          decoration: InputDecoration(
+                              labelText: "Password",
+                              hintText: "Your password",
+                              border: OutlineInputBorder()),
+                        ),
                       )),
-              SizedBox(
-                height: 20,
-              ),
-              Text("Password"),
-              SizedBox(
-                height: 10,
-              ),
-              Observer(
-                  builder: (_) => Container(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextField(
-                          controller: TextEditingController(
-                              text: loginStore.password)))),
-              SizedBox(
-                height: 20,
-              ),
-              Observer(
-                  builder: (_) => Container(
-                      width: double.infinity,
-                      height: 50,
-                      child: Text(loginStore.password))),
               SizedBox(
                 height: 20,
               ),
