@@ -1,4 +1,4 @@
-# flutter_boiler_template
+# flutter_template
 
 A new Flutter project with Mobx + Provider
 
