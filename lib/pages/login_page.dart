@@ -18,9 +18,7 @@ class _LoginState extends BaseState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login Page")
-      ),
+      appBar: AppBar(title: Text("Login Page")),
       body: Stack(children: <Widget>[
         Padding(
             padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -33,8 +31,9 @@ class _LoginState extends BaseState<LoginPage> {
                   builder: (_) => Container(
                         width: double.infinity,
                         height: 50,
-                        child:
-                            TextField(onChanged: (value) => loginStore.email),
+                        child: TextField(
+                            controller:
+                                TextEditingController(text: loginStore.email)),
                       )),
               SizedBox(
                 height: 20,
@@ -48,7 +47,16 @@ class _LoginState extends BaseState<LoginPage> {
                       width: double.infinity,
                       height: 50,
                       child: TextField(
-                          onChanged: (value) => loginStore.password))),
+                          controller: TextEditingController(
+                              text: loginStore.password)))),
+              SizedBox(
+                height: 20,
+              ),
+              Observer(
+                  builder: (_) => Container(
+                      width: double.infinity,
+                      height: 50,
+                      child: Text(loginStore.password))),
               SizedBox(
                 height: 20,
               ),

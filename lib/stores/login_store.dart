@@ -2,8 +2,11 @@ import 'package:mobx/mobx.dart';
 
 import 'base/base_store.dart';
 
-class LoginStore extends BaseStore{
- 
+part 'login_store.g.dart';
+
+class LoginStore = _LoginStore with _$LoginStore;
+
+abstract class _LoginStore extends BaseStore with Store {
   @observable
   String email = '';
 
@@ -20,7 +23,7 @@ class LoginStore extends BaseStore{
     password = value;
   }
 
-  void login(){
+  void login() {
     print("Login function is executed");
   }
 }
